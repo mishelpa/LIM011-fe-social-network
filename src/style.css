@@ -1,31 +1,88 @@
 *{
+    font-family: 'Handlee', cursive;
+}
+body{
     padding: 0;
+    margin: 0; 
+}
+/* Seccion de login y registro */
+.flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.login-register{
+    height: 100vh;
+}
+.login-register-header{
+    height: 25%;
+    width: 100%;
+}
+.login-register-img{
+    height: 90%;
+    padding-top: 2%;
+}  
+.login-register-section{
+    height: 75%;
+    width: 100%;
+}
+.login-register-body{
+    width: 100%;
+}
+.style{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+.input-log-reg{
+    width: 50%;
+}
+.btn-log-reg{
+    width: 30%;
+    background-color: rgb(59, 184, 134);
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+button>a{
+    text-decoration: none;
+    color: white;
+}
+.login-footer>p {
     margin: 0;
 }
-.view-login-flex{
-    width: 100%;
-    display: flex;
-    height: 100%;
+.login-footer p:nth-child(3) {
+    margin-top:10%;
 }
-
-.login-header{
-    width: 50%;
-    background-color: blueviolet;
+.register-footer {
+    width:50%;
+    font-size: 12px;
 }
-
-.login-section{
-    width: 50%;
-    background-color: aquamarine;
-}
-.login-img{
-    width: 100%;
-}
-figure{
-    height: 100%;
-}
-@media screen and (min-width: 768px){
-    .view-login-flex{
-        flex-direction: column;
+@media all and (min-width: 768px){
+    .login-register{
+        display: flex;
+        flex-direction: row;
     }
-
+    .login-register-header{
+        width: 50%;
+        height: 100vh;
+    }
+    .login-register-img{
+        width: 100%;
+        height: 100%;
+        padding: 0;
+    }  
+    .login-register-section{
+        width: 50%;
+        height: 100vh;
+    }
+    .login-register-body{
+        padding-top: 20%;
+    }
+    .input-log-reg {
+        width: 40%;
+    }
+    .btn-login-register{
+        width: 20%;
+    }
 }

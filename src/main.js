@@ -1,14 +1,4 @@
-import { changeView } from '../src/controllers/route.js';
-import { createUser } from '../src/example.js';
-
-const init2 = () => {
-    document.querySelector('#btn-register').addEventListener('click',() => {
-        const email = document.querySelector('#email-register').value;
-        const password = document.querySelector('#password-register').value;
-        createUser(email, password);
-        console.log(email)
-    })
-}
+import { changeView } from './controllers/route.js';
 
 const init = () => {
     changeView(window.location.hash)
@@ -28,5 +18,4 @@ const init = () => {
 }
 
 window.addEventListener('load',init);
-window.addEventListener('load', init2);
 
