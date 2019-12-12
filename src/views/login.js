@@ -1,5 +1,5 @@
 export default () => {
-    const viewLogin = `
+  const viewLogin = `
     <div class="login-register-header flex">
       <img class="login-register-img" src="../src/img/fondo.jpg" alt="Mujer programando">
     </div>
@@ -22,8 +22,8 @@ export default () => {
       </div>
     </div>
     `;
-    const divElement = document.createElement('div');
-    divElement.classList.add('login-register');
-    divElement.innerHTML = viewLogin;
-    return divElement;
-}
+  const divElement = document.createElement('div');
+  divElement.classList.add('login-register');
+  divElement.innerHTML = viewLogin;
+  return divElement;
+};

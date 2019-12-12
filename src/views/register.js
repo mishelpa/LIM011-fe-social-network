@@ -1,6 +1,8 @@
+/* eslint-disable import/extensions */
 import { createUser } from '../controllers/register-control.js';
+
 export default () => {
-    const viewRegister = `
+  const viewRegister = `
     <div class="login-register-header flex">
       <img class="login-register-img" src="../src/img/fondo.jpg" alt="Mujer programando">
     </div>
@@ -20,14 +22,13 @@ export default () => {
       </div>
     </div>
     `;
-    const divElement = document.createElement('div');
-    divElement.classList.add('login-register');
-    divElement.innerHTML = viewRegister;
-    divElement.querySelector('#btn-register').addEventListener('click',() => {
-      const email = document.querySelector('#email-register').value;
-      const password = document.querySelector('#password-register').value;
-      createUser(email, password);
-      
-  }) 
-    return divElement;
-}
+  const divElement = document.createElement('div');
+  divElement.classList.add('login-register');
+  divElement.innerHTML = viewRegister;
+  divElement.querySelector('#btn-register').addEventListener('click', () => {
+    const email = document.querySelector('#email-register').value;
+    const password = document.querySelector('#password-register').value;
+    createUser(email, password);
+  });
+  return divElement;
+};
