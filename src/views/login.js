@@ -1,4 +1,4 @@
-import { signInUser } from '../controllers/login-controller.js';
+import { signInUser, eventGoogleSignIn, eventFacebookSignIn } from '../controllers/login-controller.js';
 
 export default () => {
   const viewLogin = `
@@ -17,8 +17,8 @@ export default () => {
       <div class="login-footer flex">
         <p id="">O bien ingresa con...</p>
         <p>
-        <i><img src="https://img.icons8.com/color/48/000000/facebook-new.png"></i>
-        <i><img src="https://img.icons8.com/color/48/000000/google-plus--v1.png"></i>
+        <i id="btn-facebook"><img src="https://img.icons8.com/color/48/000000/facebook-new.png"></i>
+        <i id="btn-google"><img src="https://img.icons8.com/color/48/000000/google-plus--v1.png"></i>
         </p>
         <p>¿No tienes una cuenta? <a href="#/register">Registrate</a></p>
       </div>
@@ -27,8 +27,13 @@ export default () => {
   const divElement = document.createElement('div');
   divElement.classList.add('login-register');
   divElement.innerHTML = viewLogin;
-  divElement.querySelector('.btn-log-reg').addEventListener('click', () => {
-    signInUser();
-  });
+  divElement.querySelector('.btn-log-reg').addEventListener('click', signInUser);
+
+  const google = divElement.querySelector('#btn-google');
+  google.addEventListener('click', eventGoogleSignIn);
+
+  const facebook = divElement.querySelector('#btn-facebook');
+  facebook.addEventListener('click', eventFacebookSignIn);
+
   return divElement;
 };
