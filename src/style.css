@@ -33,6 +33,7 @@ body{
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 20px;
+    outline: none;
 }
 .input-log-reg{
     width: 50%;
@@ -43,6 +44,9 @@ body{
     color: white;
     font-size: 17px;
     font-weight: bold;
+}
+.login-register-body p{
+    color:red;
 }
 button>a{
     text-decoration: none;

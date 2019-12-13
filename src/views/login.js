@@ -1,3 +1,5 @@
+import { signInUser } from '../controllers/login-controller.js';
+
 export default () => {
   const viewLogin = `
     <div class="login-register-header flex">
@@ -9,7 +11,7 @@ export default () => {
         <h3>¡Bienvenida, coder!</h3>
         <input class="input-log-reg style" type="email" id="email" placeholder="Ingresa tu correo"></br>
         <input class="input-log-reg style" type="password" id="password" placeholder="Ingresa tu contraseña"></br>
-        <button class="btn-log-reg style" id="btn-enter"><a href="#/profile">Log in</a></button>
+        <button class="btn-log-reg style" id="btn-enter">Log in</a></button>
         <p id="message-error"></p>
       </div>
       <div class="login-footer flex">
@@ -25,5 +27,8 @@ export default () => {
   const divElement = document.createElement('div');
   divElement.classList.add('login-register');
   divElement.innerHTML = viewLogin;
+  divElement.querySelector('.btn-log-reg').addEventListener('click', () => {
+    signInUser();
+  });
   return divElement;
 };

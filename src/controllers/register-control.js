@@ -19,7 +19,7 @@ const createUser = () => {
       console.log(errorMessage);
       switch (errorCode) {
         case 'auth/invalid-email':
-          message.innerHTML = 'La dirección de correo electrónico no es valido';
+          message.innerHTML = 'La dirección de correo electrónico no es valida';
           break;
         case 'auth/email-already-in-use':
           message.innerHTML = 'La dirección de correo electrónico ya esta en uso';

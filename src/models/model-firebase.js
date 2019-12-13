@@ -7,3 +7,5 @@ export const createAuth = (email, password) => firebase.auth().createUserWithEma
 export const verificationEmail = () => firebase.auth().currentUser.sendEmailVerification();
 
 export const signIn = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
+
+export const googleSign = () => firebase.auth.GoogleAuthProvider();
