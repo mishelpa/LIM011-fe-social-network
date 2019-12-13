@@ -1,5 +1,5 @@
-/* eslint-disable import/extensions */
-import { createUser } from '../controllers/register-control.js';
+
+import createUser from '../controllers/register-control.js';
 
 export default () => {
   const viewRegister = `
@@ -26,9 +26,7 @@ export default () => {
   divElement.classList.add('login-register');
   divElement.innerHTML = viewRegister;
   divElement.querySelector('#btn-register').addEventListener('click', () => {
-    const email = document.querySelector('#email-register').value;
-    const password = document.querySelector('#password-register').value;
-    createUser(email, password);
+    createUser();
   });
   return divElement;
 };
