@@ -1,17 +1,23 @@
 /* eslint-disable no-console */
 
-import { createAuth, verificationEmail } from '../models/model-firebase.js';
+import { createAuth, verificationEmail, addNote } from '../models/model-firebase.js';
 
 const createUser = () => {
+  const name = document.querySelector('#name-register').value;
   const email = document.querySelector('#email-register').value;
   const password = document.querySelector('#password-register').value;
   const message = document.querySelector('#message-reg');
   if (email !== '' || password !== '') {
     createAuth(email, password)
-      .then((verificar) => {
+      .then((newUser) => {
         verificationEmail();
+        const obj = {
+          Name: name,
+          Email: newUser.user.email,
+          PhotoURL: newUser.user.PhotoURL,
+        };
+        addNote('user', obj);
         window.location.hash = '#/';
-        console.log(verificar);
       })
       .catch((error) => {
       // Handle Errors here.

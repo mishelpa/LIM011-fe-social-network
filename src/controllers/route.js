@@ -1,29 +1,25 @@
+/* eslint-disable consistent-return */
 
 import components from '../views/components.js';
 
 const changeView = (route) => {
   const container = document.querySelector('#container');
   container.innerHTML = '';
-  let result;
   switch (route) {
     case '':
     case '#':
     case '#/': {
-      result = container.appendChild(components.login());
-      break;
+      return container.appendChild(components.login());
     }
     case '#/register': {
-      result = container.appendChild(components.register());
-      break;
+      return container.appendChild(components.register());
     }
     case '#/profile': {
-      result = container.appendChild(components.profile());
-      break;
+      return container.appendChild(components.profile());
     }
     default:
       break;
   }
-  return result;
 };
 
 export default changeView;
