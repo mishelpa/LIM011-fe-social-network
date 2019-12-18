@@ -9,8 +9,8 @@ export default () => {
       <div class="login-register-body flex">
         <img class="" src="../img/logo6.png" alt="logo CodeGirl" width=170px>
         <h3>¡Bienvenida, coder!</h3>
-        <input class="input-log-reg style" type="email" id="email" placeholder="Ingresa tu correo"></br>
-        <input class="input-log-reg style" type="password" id="password" placeholder="Ingresa tu contraseña"></br>
+        <input class="input-log-reg style" type="email" placeholder="Ingresa tu correo"></br>
+        <input class="input-log-reg style" type="password" placeholder="Ingresa tu contraseña"></br>
         <button class="btn-log-reg style" id="btn-enter">Log in</a></button>
         <p id="message-error"></p>
       </div>

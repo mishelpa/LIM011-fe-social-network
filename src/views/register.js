@@ -10,7 +10,7 @@ export default () => {
       <div class="login-register-body flex">
         <img class="" src="../img/logo6.png" alt="logo CodeGirl" width=150px>
         <h3>¡Bienvenida, coder!</h3>
-        <input class="input-log-reg style" type="name" id="name-register" placeholder="Ingresa tu nombre"></br>
+        <input class="input-log-reg style" type="text" id="name-register" placeholder="Ingresa tu nombre"></br>
         <input class="input-log-reg style" type="email" id="email-register" placeholder="Ingresa tu correo"></br>
         <input class="input-log-reg style" type="password" id="password-register" placeholder="Ingresa tu contraseña"></br>
         <button class="btn-log-reg style" id="btn-register">Registrate</button>
@@ -25,8 +25,6 @@ export default () => {
   const divElement = document.createElement('div');
   divElement.classList.add('login-register');
   divElement.innerHTML = viewRegister;
-  divElement.querySelector('#btn-register').addEventListener('click', () => {
-    createUser();
-  });
+  divElement.querySelector('#btn-register').addEventListener('click', createUser);
   return divElement;
 };

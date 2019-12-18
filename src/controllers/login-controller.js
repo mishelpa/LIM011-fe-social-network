@@ -3,10 +3,13 @@ import {
   signIn, googleSignIn, facebookSignIng, signOut, addNote,
 } from '../models/model-firebase.js';
 
-export const signInUser = () => {
-  const email = document.querySelector('#email').value;
-  const password = document.querySelector('#password').value;
-  const message = document.querySelector('#message-error');
+export const signInUser = (event) => {
+  event.preventDefault(); // para detener al action del form (submit)
+
+  const btnLogin = event.target;
+  const email = btnLogin.closest('div').querySelector('[type=email]').value;
+  const password = btnLogin.closest('div').querySelector('[type=password]').value;
+  const message = btnLogin.closest('div').querySelector('p');
   signIn(email, password)
     .then((newUser) => {
       console.log('hola:', newUser.user.emailVerified);
