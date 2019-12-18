@@ -1,12 +1,11 @@
-/* eslint-disable no-console */
-
 import { createAuth, verificationEmail, addNote } from '../models/model-firebase.js';
 
-const createUser = () => {
-  const name = document.querySelector('#name-register').value;
-  const email = document.querySelector('#email-register').value;
-  const password = document.querySelector('#password-register').value;
-  const message = document.querySelector('#message-reg');
+const createUser = (event) => {
+  const btnRegister = event.target;
+  const name = btnRegister.closest('div').querySelector('[type = text]').value;
+  const email = btnRegister.closest('div').querySelector('[type = email]').value;
+  const password = btnRegister.closest('div').querySelector('[type = password]').value;
+  const message = btnRegister.closest('div').querySelector('p');
   if (email !== '' || password !== '') {
     createAuth(email, password)
       .then((newUser) => {
@@ -14,7 +13,7 @@ const createUser = () => {
         const obj = {
           Name: name,
           Email: newUser.user.email,
-          PhotoURL: newUser.user.PhotoURL,
+          PhotoURL: null,
         };
         addNote('user', obj);
         window.location.hash = '#/';

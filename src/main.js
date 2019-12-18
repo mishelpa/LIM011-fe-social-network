@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 import changeView from './controllers/route.js';
 
 const init = () => {

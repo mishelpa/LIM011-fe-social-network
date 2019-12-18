@@ -1,18 +1,23 @@
 /* eslint-disable no-console */
-/* eslint-disable no-undef */
 
-/* eslint-disable max-len */
-
-export const createAuth = (email, password) => firebase.auth().createUserWithEmailAndPassword(email, password);
+export const createAuth = (email, password) => (
+  firebase.auth().createUserWithEmailAndPassword(email, password)
+);
 
 export const verificationEmail = () => firebase.auth().currentUser.sendEmailVerification();
 
-export const signIn = (email, password) => firebase.auth().signInWithEmailAndPassword(email, password);
+export const signIn = (email, password) => (
+  firebase.auth().signInWithEmailAndPassword(email, password)
+);
 
-export const googleSignIn = () => firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider());
+export const googleSignIn = () => (
+  firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+);
 // Crea una instancia del objeto del proveedor de Google.
 
-export const facebookSignIng = () => firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider());
+export const facebookSignIng = () => (
+  firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider())
+);
 // Crea una instancia del objeto del proveedor de Facebook.
 
 // Cerrar Sesion.
