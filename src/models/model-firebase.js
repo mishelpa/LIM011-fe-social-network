@@ -43,5 +43,5 @@ export const observer = () => {
 };
 
 export const user = () => firebase.auth().currentUser;
-export const addNote = (note, objeto) => firebase.firestore().collection(note).add(objeto);
+export const addNote = (note, id, obj) => firebase.firestore().collection(note).doc(id).set(obj);
 export const getNote = (note) => firebase.firestore().collection(note).get();

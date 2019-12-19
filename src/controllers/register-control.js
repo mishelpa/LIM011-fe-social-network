@@ -2,7 +2,7 @@ import { createAuth, verificationEmail, addNote } from '../models/model-firebase
 
 const createUser = (event) => {
   const btnRegister = event.target;
-  const name = btnRegister.closest('div').querySelector('[type = text]').value;
+  const nameUser = btnRegister.closest('div').querySelector('[type = text]').value;
   const email = btnRegister.closest('div').querySelector('[type = email]').value;
   const password = btnRegister.closest('div').querySelector('[type = password]').value;
   const message = btnRegister.closest('div').querySelector('p');
@@ -11,11 +11,11 @@ const createUser = (event) => {
       .then((newUser) => {
         verificationEmail();
         const obj = {
-          Name: name,
-          Email: newUser.user.email,
-          PhotoURL: null,
+          name: nameUser,
+          email: newUser.user.email,
+          photoURL: 'https://img.icons8.com/ios-glyphs/120/000000/user-female.png',
         };
-        addNote('user', obj);
+        addNote('user', newUser.user.uid, obj);
         window.location.hash = '#/';
       })
       .catch((error) => {

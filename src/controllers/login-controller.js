@@ -2,6 +2,7 @@
 import {
   signIn, googleSignIn, facebookSignIng, signOut, addNote,
 } from '../models/model-firebase.js';
+import { getUser } from './profile-controller.js';
 
 export const signInUser = (event) => {
   event.preventDefault(); // para detener al action del form (submit)
@@ -12,12 +13,13 @@ export const signInUser = (event) => {
   const message = btnLogin.closest('div').querySelector('p');
   signIn(email, password)
     .then((newUser) => {
-      console.log('hola:', newUser.user.emailVerified);
+      // console.log('hola:', newUser.user.emailVerified);
       if (newUser.user.emailVerified !== true) {
         message.innerHTML = 'VALIDAR CUENTA - REVISA TU CORREO';
       } else {
         // console.log('ingresaste..', newUser);
         window.location.hash = '#/profile';
+        getUser();
       }
     })
     .catch((error) => {
@@ -47,31 +49,43 @@ export const eventGoogleSignIn = () => {
     .then((result) => {
       const user = result.user;
       const obj = {
-        Name: user.displayName,
-        Email: user.email,
-        PhotoURL: user.photoURL,
+        name: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
       };
       window.location.hash = '#/profile';
-      addNote('user', obj);
+      addNote('user', user.uid, obj)
+        .then(() => {
+          window.location.hash = '#/profile';
+        });
     }).catch((error) => {
       const errorMessage = error.message;
       console.log('errorMessage: ', errorMessage);
     });
 };
 
-export const eventFacebookSignIn = () => {
+export const eventFacebookSignIn = (event) => {
+  const btnRegister = event.target;
+  const message = btnRegister.closest('div').querySelector('p');
   facebookSignIng()
     .then((result) => {
       // The signed-in user info.
       const user = result.user;
       const obj = {
-        Name: user.displayName,
-        Email: user.email,
-        PhotoURL: user.photoURL,
+        name: user.displayName,
+        email: user.email,
+        photoURL: user.photoURL,
       };
       window.location.hash = '#/profile';
-      addNote('user', obj);
+      addNote('user', user.uid, obj)
+        .then(() => {
+          window.location.hash = '#/profile';
+        });
     }).catch((error) => {
+      const errorCode = error.code;
+      if (errorCode === 'auth/account-exists-with-different-credential') {
+        message.innerHTML = 'La dirección de correo electrónico ya esta en uso';
+      }
       console.log('error: ', error);
     });
 };

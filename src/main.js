@@ -14,6 +14,7 @@ const init = () => {
     appId: '1:842165782313:web:fc7f4b364affd66c55d938',
   };
   firebase.initializeApp(firebaseConfig);
+  // changeView(window.location.hash);
 };
 
 window.addEventListener('load', init);

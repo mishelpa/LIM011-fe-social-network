@@ -90,3 +90,97 @@ button>a{
         width: 20%;
     }
 }
+
+/* Seccion de vista home y perfil  */
+
+header{
+    background-color: rgb(233, 231, 231);
+    background-image: url('/img/logo6.png');
+    background-size: 110px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+nav{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 18px;
+}
+.body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-section{
+    width: 84%;
+    margin: 3%;
+}
+.cover-page{
+    display: none;
+}
+.avatar{
+    width: 90px;
+    height: 90px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+.info-user{
+    display: flex;
+    flex-direction: row;
+}
+.info-user >div{
+    width: 60%;
+    font-size:13px;
+    padding-left: 7%;
+}
+.user{
+    margin-top: 3%;
+    font-size: 15px;
+    font-weight: bold;
+}
+.publications-section{
+    background-color:rgb(47, 78, 255);
+    width: 90%;
+}
+form{
+    background-color:rgb(123, 255, 47);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.buttons{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@media all and (min-width: 768px){
+    .body{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    .profile-section{
+        width: 25%;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+    }
+    .cover-page{
+        display: block;
+        width: 100%;
+        height: 110px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+    }
+    .info-user{
+        margin: 1%;
+    }
+    .publications-section{
+        background-color:rgb(47, 78, 255);
+        width: 40%;
+    }
+    
+}
