@@ -6,10 +6,9 @@ export const userActive = () => user();
 export const getUser = () => {
   getNote('user')
     .then((querySnapshot) => {
-      console.log(user().uid);
       querySnapshot.forEach((doc) => {
-        console.log(doc.data());
-        if (doc.data().email === user().email) {
+        console.log(doc);
+        if (doc.id === userActive().uid) {
           document.querySelector('#name').textContent = doc.data().name;
           document.querySelector('#email').textContent = doc.data().email;
           document.querySelector('#photo').src = doc.data().photoURL;
