@@ -1,7 +1,6 @@
 import changeView from './controllers/route.js';
 
 const init = () => {
-  changeView(window.location.hash);
   window.addEventListener('hashchange', () => changeView(window.location.hash));
   // conexion
   const firebaseConfig = {
@@ -14,6 +13,7 @@ const init = () => {
     appId: '1:842165782313:web:fc7f4b364affd66c55d938',
   };
   firebase.initializeApp(firebaseConfig);
+  changeView(window.location.hash);
   // changeView(window.location.hash);
 };
 

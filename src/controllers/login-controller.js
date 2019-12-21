@@ -2,7 +2,7 @@
 import {
   signIn, googleSignIn, facebookSignIng, signOut, addNote,
 } from '../models/model-firebase.js';
-import { getUser } from './profile-controller.js';
+// import { getUser } from './profile-controller.js';
 
 export const signInUser = (event) => {
   event.preventDefault(); // para detener al action del form (submit)
@@ -13,13 +13,11 @@ export const signInUser = (event) => {
   const message = btnLogin.closest('div').querySelector('p');
   signIn(email, password)
     .then((newUser) => {
-      // console.log('hola:', newUser.user.emailVerified);
       if (newUser.user.emailVerified !== true) {
         message.innerHTML = 'VALIDAR CUENTA - REVISA TU CORREO';
       } else {
-        // console.log('ingresaste..', newUser);
         window.location.hash = '#/profile';
-        getUser();
+        // getUser();
       }
     })
     .catch((error) => {
@@ -53,7 +51,6 @@ export const eventGoogleSignIn = () => {
         email: user.email,
         photoURL: user.photoURL,
       };
-      window.location.hash = '#/profile';
       addNote('user', user.uid, obj)
         .then(() => {
           window.location.hash = '#/profile';

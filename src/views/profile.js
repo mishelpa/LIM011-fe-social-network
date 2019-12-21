@@ -1,5 +1,7 @@
 import { eventSignOut } from '../controllers/login-controller.js';
-import { userActive } from '../controllers/profile-controller.js';
+import { getUser } from '../controllers/profile-controller.js';
+import { observer } from '../models/model-firebase.js';
+
 
 export default () => {
   const viewProfile = `
@@ -13,10 +15,10 @@ export default () => {
             <div class="profile-section">
                 <img class="cover-page" src="/img/fondo.jpg" alt="portada">
                 <div class="info-user">
-                    <img id="photo" class="avatar" src="${userActive().photoURL}" alt="avatar" >
+                    <img id="photo" class="avatar" src="" alt="avatar" >
                     <div>
-                        <p id="name" class="user" >${userActive().displayName}</p>
-                        <p id="email">${userActive().email}</p>
+                        <p id="name" class="user" ></p>
+                        <p id="email"></p>
                     </div>
                 </div>
             </div>
@@ -37,6 +39,7 @@ export default () => {
   divElement.innerHTML = viewProfile;
 
   divElement.querySelector('#btn-close').addEventListener('click', eventSignOut);
-
+  getUser();
+  observer();
   return divElement;
 };
