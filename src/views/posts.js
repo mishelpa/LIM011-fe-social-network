@@ -1,5 +1,5 @@
 import {
-  borrar, actualizar, guardarLikes, mostrarLikes, createComments,
+  borrar, actualizar, guardarLikes, mostrarLikes, createComments, mostrarComments,
 } from '../controllers/post-controller.js';
 import { userActive } from '../controllers/profile-controller.js';
 
@@ -36,7 +36,7 @@ export const postView = (publication) => {
             <textarea class="comment-post" id="comment-post" cols="30" rows="4" placeholder="Escribe un comentario"></textarea>
             <img id="btn-comment" class="icons" src="https://img.icons8.com/color/96/000000/telegram-app.png">
           </form> 
-          <div class="" id="all-comments">   
+          <div class="" id="${publication.id}">   
           </div>
         </div>
     </div>
@@ -113,6 +113,7 @@ export const postView = (publication) => {
   const commentSection = divElement.querySelector('#comments-section');
   btnCommentView.addEventListener('click', () => {
     commentSection.classList.toggle('hide');
+    mostrarComments(publication.id);
   });
   const btnComment = divElement.querySelector('#btn-comment');
   btnComment.addEventListener('click', () => {
@@ -121,12 +122,12 @@ export const postView = (publication) => {
     const user = userActive();
     const obj = {
       message: comment,
-      id_user: user.uid,
+      id_publication: publication.id,
       name_user: user.displayName,
     };
     createComments(publication.id, obj);
     divElement.querySelector('#comment-post').value = '';
+    mostrarComments(publication.id);
   });
-
   return divElement;
 };

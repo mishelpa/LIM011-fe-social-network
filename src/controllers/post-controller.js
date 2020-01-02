@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
 import {
-  addPost, deletePost, updatePost, showPost, saveLikes, showLikes, addComments,
+  addPost, deletePost, updatePost, showPost, saveLikes, showLikes, addComments, showComments,
 } from '../models/model-firebase.js';
 import { userActive } from './profile-controller.js';
 import { postView } from '../views/posts.js';
+import { commentView } from '../views/comments.js';
 
 export const datePublication = (datePost) => {
   const yearPost = datePost.getFullYear();
@@ -27,7 +28,7 @@ export const createPost = (event) => {
     date_post: datePublication(date),
     status: statusPost,
   };
-  addPost('prueba', obj)
+  addPost('post', obj)
     .then((docRef) => {
       console.log('Document written with ID: ', docRef);
       document.querySelector('#message-post').value = '';
@@ -100,5 +101,15 @@ export const createComments = (idPost, obj) => {
     })
     .catch((error) => {
       console.error('Error adding document: ', error);
+    });
+};
+
+export const mostrarComments = (idPost) => {
+  showComments(idPost)
+    .then((querySnapshot) => {
+      document.querySelector(`#${idPost}`).innerHTML = '';
+      querySnapshot.forEach((doc) => {
+        commentView(doc);
+      });
     });
 };

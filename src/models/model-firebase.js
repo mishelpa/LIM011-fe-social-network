@@ -49,14 +49,17 @@ export const getNote = (note) => firebase.firestore().collection(note).get();
 export const addPost = (nameCollection, obj) => (
   firebase.firestore().collection(nameCollection).add(obj)
 );
-export const showPost = () => firebase.firestore().collection('prueba');
-export const deletePost = (ide) => firebase.firestore().collection('prueba').doc(ide).delete();
-export const updatePost = (ide, obj) => firebase.firestore().collection('prueba').doc(ide).update(obj);
+export const showPost = () => firebase.firestore().collection('post');
+export const deletePost = (ide) => firebase.firestore().collection('post').doc(ide).delete();
+export const updatePost = (ide, obj) => firebase.firestore().collection('post').doc(ide).update(obj);
 
-export const saveLikes = (idPost, obj, ide) => firebase.firestore().collection('prueba').doc(idPost).collection('likes')
+export const saveLikes = (idPost, obj, ide) => firebase.firestore().collection('post').doc(idPost).collection('likes')
   .doc(ide)
   .set(obj);
-export const showLikes = (idPost) => firebase.firestore().collection('prueba').doc(idPost).collection('likes');
+export const showLikes = (idPost) => firebase.firestore().collection('post').doc(idPost).collection('likes');
 
-export const addComments = (idPost, obj) => firebase.firestore().collection('prueba').doc(idPost).collection('comments')
+export const addComments = (idPost, obj) => firebase.firestore().collection('post').doc(idPost).collection('comments')
   .add(obj);
+
+export const showComments = (idPost) => firebase.firestore().collection('post').doc(idPost).collection('comments')
+  .get();
