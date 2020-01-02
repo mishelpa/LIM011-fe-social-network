@@ -45,3 +45,18 @@ export const observer = () => {
 export const user = () => firebase.auth().currentUser;
 export const addNote = (note, id, obj) => firebase.firestore().collection(note).doc(id).set(obj);
 export const getNote = (note) => firebase.firestore().collection(note).get();
+
+export const addPost = (nameCollection, obj) => (
+  firebase.firestore().collection(nameCollection).add(obj)
+);
+export const showPost = () => firebase.firestore().collection('prueba');
+export const deletePost = (ide) => firebase.firestore().collection('prueba').doc(ide).delete();
+export const updatePost = (ide, obj) => firebase.firestore().collection('prueba').doc(ide).update(obj);
+
+export const saveLikes = (idPost, obj, ide) => firebase.firestore().collection('prueba').doc(idPost).collection('likes')
+  .doc(ide)
+  .set(obj);
+export const showLikes = (idPost) => firebase.firestore().collection('prueba').doc(idPost).collection('likes');
+
+export const addComments = (idPost, obj) => firebase.firestore().collection('prueba').doc(idPost).collection('comments')
+  .add(obj);

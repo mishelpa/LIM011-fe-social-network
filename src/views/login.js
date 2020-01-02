@@ -17,8 +17,8 @@ export default () => {
       <div class="login-footer flex">
         <p id="">O bien ingresa con...</p>
         <p>
-        <i id="btn-facebook"><img src="https://img.icons8.com/color/48/000000/facebook-new.png"></i>
-        <i id="btn-google"><img src="https://img.icons8.com/color/48/000000/google-plus--v1.png"></i>
+        <i id="btn-facebook"><img class="icon-network" src="https://img.icons8.com/color/48/000000/facebook-new.png"></i>
+        <i id="btn-google"><img class="icon-network" src="https://img.icons8.com/color/48/000000/google-plus--v1.png"></i>
         </p>
         <p>¿No tienes una cuenta? <a href="#/register">Registrate</a></p>
       </div>

@@ -17,8 +17,9 @@ export default () => {
         <p id="message-reg"></p>
       </div>
       <div class="register-footer flex">
-        <p class >Al registrarte, aceptas nuestras Condiciones, la Política de datos 
+        <p class="conditions" >Al registrarte, aceptas nuestras Condiciones, la Política de datos 
           y la Política de cookies.</p>
+        <p>¿Ya tienes una cuenta? <a href="#/">Log in</a></p>
       </div>
     </div>
     `;
