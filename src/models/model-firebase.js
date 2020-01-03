@@ -22,26 +22,6 @@ export const facebookSignIng = () => (
 
 // Cerrar Sesion.
 export const signOut = () => firebase.auth().signOut();
-
-// Observador - "Estado de autenticación y obtén datos del usuario".
-export const observer = () => {
-  firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-      // User is signed in.
-      const displayName = user.displayName;
-      const email = user.email;
-      const emailVerified = user.emailVerified;
-      const photoURL = user.photoURL;
-      const isAnonymous = user.isAnonymous;
-      const uid = user.uid;
-      const providerData = user.providerData;
-      console.log('Datos del Usuario:', displayName, email, emailVerified, photoURL, isAnonymous, uid, providerData);
-    } else {
-      console.log('FIN DE SESIÒN');
-    }
-  });
-};
-
 export const user = () => firebase.auth().currentUser;
 export const addNote = (note, id, obj) => firebase.firestore().collection(note).doc(id).set(obj);
 export const getNote = (note) => firebase.firestore().collection(note).get();

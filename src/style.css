@@ -282,10 +282,6 @@ select{
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-.post-header>p{
-    font-size: 0.75rem;
-    font-weight: bold;
-}
 .post-header p span{
     font-size: 0.95rem;
     font-weight: bold;
