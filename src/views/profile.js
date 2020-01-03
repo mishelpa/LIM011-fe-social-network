@@ -1,9 +1,10 @@
 import { eventSignOut } from '../controllers/login-controller.js';
 import { getUser } from '../controllers/profile-controller.js';
 import { createPost, showPublication } from '../controllers/post-controller.js';
+import { postView } from './posts.js';
 
 
-export default () => {
+export default (posts, user) => {
   const viewProfile = `
         <header>
             <nav>
@@ -51,10 +52,12 @@ export default () => {
   file.addEventListener('change', () => {
     divElement.querySelector('#input-value').innerHTML = file.value.replace(/([^\\]*\\)*/, '');
   });
-
+  const allPublications = divElement.querySelector('#all-publications');
+  posts.forEach((element) => {
+    allPublications.appendChild(postView(element));
+  });
   divElement.querySelector('#btn-close').addEventListener('click', eventSignOut);
   getUser();
   divElement.querySelector('#btn-post').addEventListener('click', createPost);
-  showPublication();
   return divElement;
 };
