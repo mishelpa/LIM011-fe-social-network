@@ -1,5 +1,6 @@
+// eslint-disable-next-line import/no-cycle
 import {
-  borrar, actualizar, guardarLikes, mostrarLikes, createComments, mostrarComments,
+  deletePublication, updatePublication, saveLikePublication, createComments, showCommentPublication,
 } from '../controllers/post-controller.js';
 import { userActive } from '../controllers/profile-controller.js';
 
@@ -47,7 +48,7 @@ export const postView = (publication) => {
 
   const btnDelete = divElement.querySelector('#btn-delete');
   btnDelete.addEventListener('click', () => {
-    borrar(publication.id);
+    deletePublication(publication.id);
   });
   const btnEdit = divElement.querySelector('#btn-edit');
   const btnSave = divElement.querySelector('#btn-save');
@@ -73,7 +74,7 @@ export const postView = (publication) => {
       message: newMessage,
       status: newStatus,
     };
-    actualizar(publication.id, obj);
+    updatePublication(publication.id, obj);
     btnEdit.classList.remove('hide');
     btnSave.classList.add('hide');
     console.log('adios');
@@ -92,13 +93,13 @@ export const postView = (publication) => {
   }
 
   const btnLikes = divElement.querySelector('#btn-like');
-  const btnNonLikes = divElement.querySelector('#btn-nonlike');
+  // const btnNonLikes = divElement.querySelector('#btn-nonlike');
   btnLikes.addEventListener('click', () => {
     const obj = {
       user: userActive().displayName,
       like: '1',
     };
-    guardarLikes(publication.id, obj, userActive().uid);
+    saveLikePublication(publication.id, obj, userActive().uid);
   });
 
   /* const countLikes = divElement.querySelector('#count-likes');
@@ -113,7 +114,7 @@ export const postView = (publication) => {
   const commentSection = divElement.querySelector('#comments-section');
   btnCommentView.addEventListener('click', () => {
     commentSection.classList.toggle('hide');
-    mostrarComments(publication.id);
+    showCommentPublication(publication.id);
   });
   const btnComment = divElement.querySelector('#btn-comment');
   btnComment.addEventListener('click', () => {
@@ -127,7 +128,7 @@ export const postView = (publication) => {
     };
     createComments(publication.id, obj);
     divElement.querySelector('#comment-post').value = '';
-    mostrarComments(publication.id);
+    showCommentPublication(publication.id);
   });
   return divElement;
 };

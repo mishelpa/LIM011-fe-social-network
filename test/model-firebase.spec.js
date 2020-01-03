@@ -1,11 +1,23 @@
-import MockFirebase from '../src/mockFirebase.js';
+// import MockFirebase from './mockFirebase.js';
+// global.firebase = MockFirebase();
 
 import {
-  createAuth, verificationEmail, signIn, googleSignIn, facebookSignIng, signOut, observer,
+  createAuth, verificationEmail, signIn, googleSignIn, facebookSignIng, signOut,
 } from '../src/models/model-firebase.js';
 
+const firebasemock = require('firebase-mock');
 
-global.firebase = MockFirebase();
+const mockauth = new firebasemock.MockFirebase();
+const mockfirestore = new firebasemock.MockFirestore();
+mockfirestore.autoFlush();
+mockauth.autoFlush();
+
+global.firebase = firebasemock.MockFirebaseSdk(
+  // use null if your code does not use RTDB
+  () => null,
+  () => mockauth,
+  () => mockfirestore,
+);
 
 const user = {
   email: 'mishel@gmail.com',
@@ -40,6 +52,11 @@ describe('googleSignIn', () => {
   it('debería ser una función', () => {
     expect(typeof googleSignIn).toBe('function');
   });
+  it('deberia loguearse con google', () => {
+    googleSignIn().then(() => {
+      expect('hola').toStrictEqual('hola');
+    });
+  });
 });
 
 describe('facebookSignIng', () => {
@@ -55,10 +72,4 @@ describe('signOut', () => {
   it('deberia cerrar sesion', () => signOut().then(() => {
     expect('Fin de sesion').toStrictEqual('Fin de sesion');
   }));
-});
-
-describe('observer', () => {
-  it('debería ser una función', () => {
-    expect(typeof observer).toBe('function');
-  });
 });

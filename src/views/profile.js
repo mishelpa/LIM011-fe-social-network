@@ -1,7 +1,6 @@
 import { eventSignOut } from '../controllers/login-controller.js';
 import { getUser } from '../controllers/profile-controller.js';
-import { observer } from '../models/model-firebase.js';
-import { createPost, mostrar } from '../controllers/post-controller.js';
+import { createPost, showPublication } from '../controllers/post-controller.js';
 
 
 export default () => {
@@ -55,8 +54,7 @@ export default () => {
 
   divElement.querySelector('#btn-close').addEventListener('click', eventSignOut);
   getUser();
-  observer();
   divElement.querySelector('#btn-post').addEventListener('click', createPost);
-  mostrar();
+  showPublication();
   return divElement;
 };

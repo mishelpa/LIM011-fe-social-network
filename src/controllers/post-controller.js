@@ -3,6 +3,7 @@ import {
   addPost, deletePost, updatePost, showPost, saveLikes, showLikes, addComments, showComments,
 } from '../models/model-firebase.js';
 import { userActive } from './profile-controller.js';
+// eslint-disable-next-line import/no-cycle
 import { postView } from '../views/posts.js';
 import { commentView } from '../views/comments.js';
 
@@ -39,7 +40,7 @@ export const createPost = (event) => {
 };
 
 
-export const borrar = (ide) => {
+export const deletePublication = (ide) => {
   deletePost(ide)
     .then(() => {
       console.log('Document successfully deleted!');
@@ -48,7 +49,7 @@ export const borrar = (ide) => {
     });
 };
 
-export const actualizar = (ide, obj) => {
+export const updatePublication = (ide, obj) => {
   updatePost(ide, obj)
     .then(() => {
       console.log('Document successfully updated!');
@@ -59,7 +60,7 @@ export const actualizar = (ide, obj) => {
     });
 };
 
-export const mostrar = () => {
+export const showPublication = () => {
   showPost()
     .onSnapshot((querySnapshot) => {
       document.querySelector('#all-publications').innerHTML = '';
@@ -69,7 +70,7 @@ export const mostrar = () => {
     });
 };
 
-export const guardarLikes = (idPost, obj, ide) => {
+export const saveLikePublication = (idPost, obj, ide) => {
   saveLikes(idPost, obj, ide)
     .then(() => {
       console.log('like registrado');
@@ -79,7 +80,7 @@ export const guardarLikes = (idPost, obj, ide) => {
     });
 };
 
-export const mostrarLikes = (idPost, paintLikes) => {
+export const showLikePublication = (idPost, paintLikes) => {
   showLikes(idPost, paintLikes)
     .onSnapshot((querySnapshot) => {
       const count = [];
@@ -104,7 +105,7 @@ export const createComments = (idPost, obj) => {
     });
 };
 
-export const mostrarComments = (idPost) => {
+export const showCommentPublication = (idPost) => {
   showComments(idPost)
     .then((querySnapshot) => {
       document.querySelector(`#${idPost}`).innerHTML = '';

@@ -17,6 +17,10 @@ const auth1 = () => ({
   signOut: () => new Promise((resolve) => {
     resolve('Fin de sesion');
   }),
+
+  /* signInWithPopup: (firebase.auth.GoogleAuthProvider()) => new Promise((resolve) => {
+    resolve(null);
+  }), */
 });
 
 const firebase = {

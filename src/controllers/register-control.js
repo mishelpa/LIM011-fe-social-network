@@ -21,8 +21,8 @@ const createUser = (event) => {
       .catch((error) => {
       // Handle Errors here.
         const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
+        // const errorMessage = error.message;
+        // console.log(errorMessage);
         switch (errorCode) {
           case 'auth/invalid-email':
             message.innerHTML = 'La dirección de correo electrónico no es valida';
