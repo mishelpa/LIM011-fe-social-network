@@ -2,7 +2,7 @@
 // global.firebase = MockFirebase();
 
 import {
-  createAuth, verificationEmail, signIn, googleSignIn, facebookSignIng, signOut,
+  createAuth, signIn, googleSignIn, facebookSignIng, signOut,
 } from '../src/models/model-firebase.js';
 
 const firebasemock = require('firebase-mock');
@@ -19,39 +19,25 @@ global.firebase = firebasemock.MockFirebaseSdk(
   () => mockfirestore,
 );
 
-const user = {
-  email: 'mishel@gmail.com',
-  password: '123456',
-};
-
 describe('createAuth', () => {
-  it('debería ser una función', () => {
-    expect(typeof createAuth).toBe('function');
-  });
   it('deberia crear una cuenta', () => createAuth('mishel@gmail.com', '123456').then((data) => {
-    expect(data).toStrictEqual(user);
+    expect(data.email).toStrictEqual('mishel@gmail.com');
   }));
 });
 
-describe('verificationEmail', () => {
-  it('debería ser una función', () => {
-    expect(typeof verificationEmail).toBe('function');
-  });
-});
+/* describe('verificationEmail', () => {
+  it('deberia verficar email', () => verificationEmail().then((data) => {
+    expect(data).toStrictEqual(null);
+  }));
+}); */
 
 describe('signIn', () => {
-  it('debería ser una función', () => {
-    expect(typeof signIn).toBe('function');
-  });
   it('deberia loguearse', () => signIn('mishel@gmail.com', '123456').then((data) => {
-    expect(data).toStrictEqual(user);
+    expect(data.email).toStrictEqual('mishel@gmail.com');
   }));
 });
 
 describe('googleSignIn', () => {
-  it('debería ser una función', () => {
-    expect(typeof googleSignIn).toBe('function');
-  });
   it('deberia loguearse con google', () => {
     googleSignIn().then(() => {
       expect('hola').toStrictEqual('hola');
@@ -60,15 +46,14 @@ describe('googleSignIn', () => {
 });
 
 describe('facebookSignIng', () => {
-  it('debería ser una función', () => {
-    expect(typeof facebookSignIng).toBe('function');
+  it('deberia loguearse con facebook', () => {
+    facebookSignIng().then(() => {
+      expect('hola').toStrictEqual('hola');
+    });
   });
 });
 
 describe('signOut', () => {
-  it('debería ser una función', () => {
-    expect(typeof signOut).toBe('function');
-  });
   it('deberia cerrar sesion', () => signOut().then(() => {
     expect('Fin de sesion').toStrictEqual('Fin de sesion');
   }));
