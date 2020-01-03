@@ -1,6 +1,7 @@
 // eslint-disable-next-line import/no-cycle
 import {
-  deletePublication, updatePublication, saveLikePublication, createComments, showCommentPublication,
+  deletePublication, updatePublication, saveLikePublication,
+  createComments, showCommentPublication, showLikePublication,
 } from '../controllers/post-controller.js';
 import { userActive } from '../controllers/profile-controller.js';
 
@@ -23,18 +24,18 @@ export const postView = (publication) => {
             <div id="post-message" contenteditable="false">${publication.data().message}</div>
         </div>
         <div class="post-footer">
-            <div class ="section-likes">
-              <img id="btn-like" class="icons" src="https://img.icons8.com/pastel-glyph/64/000000/like.png">
-              <img id="btn-nonlike" class="icons hide" src="https://img.icons8.com/flat_round/64/000000/hearts.png">
-              &nbsp; &nbsp; <p class="count-likes" id="count-likes"> </p>   
-            </div>    
+          <div class ="section-likes">
+            <img id="btn-like-${publication.id}" class="icons" src="https://img.icons8.com/flat_round/64/000000/hearts.png">
+            <img id="btn-nonlike-${publication.id}" class="icons hide" src="https://img.icons8.com/flat_round/64/000000/hearts.png">
+            &nbsp; &nbsp; <p class="count-likes" id="count-likes-${publication.id}"> </p>   
+          </div>    
             <img id="btn-commentView" class="icons" src="https://img.icons8.com/doodle/48/000000/filled-topic.png">
             <img id="btn-edit" class="icons" src="https://img.icons8.com/flat_round/64/000000/edit-file.png">
             <img id="btn-save" class="icons hide" src="https://img.icons8.com/cute-clipart/64/000000/save-close.png">
         </div>
         <div id ="comments-section" class="comments-section hide">
           <form class ="form-comment">
-            <textarea class="comment-post" id="comment-post" cols="30" rows="4" placeholder="Escribe un comentario"></textarea>
+            <textarea class="comment-post" id="comment-post" cols="30" rows="2" placeholder="Escribe un comentario"></textarea>
             <img id="btn-comment" class="icons" src="https://img.icons8.com/color/96/000000/telegram-app.png">
           </form> 
           <div class="" id="${publication.id}">   
@@ -92,7 +93,7 @@ export const postView = (publication) => {
     postStatus.options[1].selected = true;
   }
 
-  const btnLikes = divElement.querySelector('#btn-like');
+  const btnLikes = divElement.querySelector(`#btn-like-${publication.id}`);
   // const btnNonLikes = divElement.querySelector('#btn-nonlike');
   btnLikes.addEventListener('click', () => {
     const obj = {
@@ -101,15 +102,8 @@ export const postView = (publication) => {
     };
     saveLikePublication(publication.id, obj, userActive().uid);
   });
+  showLikePublication(publication.id);
 
-  /* const countLikes = divElement.querySelector('#count-likes');
-  const paintLikes = (count) => {
-    countLikes.innerHTML = count.length;
-    console.log(count.length);
-    btnNonLikes.classList.remove('hide');
-    btnLikes.classList.add('hide');
-  };
-  mostrarLikes(publication.id, paintLikes); */
   const btnCommentView = divElement.querySelector('#btn-commentView');
   const commentSection = divElement.querySelector('#comments-section');
   btnCommentView.addEventListener('click', () => {

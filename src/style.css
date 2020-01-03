@@ -268,6 +268,9 @@ select{
     display: flex;
     flex-direction: column;
     margin-bottom: 6%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
 }
 .post-header{
     background-color: rgb(155, 224, 66);
@@ -302,7 +305,7 @@ select{
 .post-footer{
     background-color: rgb(236, 236, 236);
     width: 90%;
-    padding:2.5% 5% 2.5%;
+    padding:1.5% 5% 1.5%;
     border: 1px solid #ccc;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -322,4 +325,43 @@ select{
 }
 .count-likes{
     margin: 0%;
+}
+.div-allcomments{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+}
+.form-comment{
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.comment-post{
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    resize: none;
+    font-size: 0.9rem;
+}
+
+/*Seccion de comentarios*/
+.div-comment{
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 0.75rem;
+}
+.comment-header{
+    background-color: rgb(155, 224, 66);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+.comment-message{
+    padding-left: 2%;
 }

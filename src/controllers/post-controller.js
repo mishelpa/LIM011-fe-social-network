@@ -80,17 +80,19 @@ export const saveLikePublication = (idPost, obj, ide) => {
     });
 };
 
-export const showLikePublication = (idPost, paintLikes) => {
-  showLikes(idPost, paintLikes)
+export const showLikePublication = (idPost) => {
+  // const btnLikes = document.querySelector(`#btn-like-${idPost}`);
+  // const btnNonLikes = document.querySelector(`#btn-nonlike-${idPost}`);
+  const countLikes = document.querySelector(`#count-likes-${idPost}`);
+  showLikes(idPost)
     .onSnapshot((querySnapshot) => {
-      const count = [];
+      let count = 0;
       querySnapshot.forEach((doc) => {
         console.log(doc.data());
-        count.push(doc.data());
+        count += 1;
       });
       console.log(count);
-      paintLikes(count);
-      // Likes.innerHTML = count;
+      countLikes.innerHTML = count;
     });
 };
 
