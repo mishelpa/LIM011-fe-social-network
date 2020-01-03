@@ -13,7 +13,7 @@ export default () => {
         </header>
         <div class="body">
             <div class="profile-section">
-                <img class="cover-page" src="/img/fondo.jpg" alt="portada">
+                <img class="cover-page" src="/src/img/fondo.jpg" alt="portada">
                 <div class="info-user">
                     <img id="photo" class="avatar" src="" alt="avatar" >
                     <div>
