@@ -1,6 +1,3 @@
-// import MockFirebase from './mockFirebase.js';
-// global.firebase = MockFirebase();
-
 import {
   createAuth, signIn, googleSignIn, facebookSignIng, signOut,
 } from '../src/models/model-firebase.js';
@@ -33,14 +30,14 @@ describe('createAuth', () => {
 
 describe('signIn', () => {
   it('deberia loguearse', () => signIn('mishel@gmail.com', '123456').then((data) => {
-    expect(data.email).toStrictEqual('mishel@gmail.com');
+    expect(data.email).toBe('mishel@gmail.com');
   }));
 });
 
 describe('googleSignIn', () => {
   it('deberia loguearse con google', () => {
     googleSignIn().then(() => {
-      expect('hola').toStrictEqual('hola');
+      expect('hola').toBe('hola');
     });
   });
 });
@@ -48,13 +45,13 @@ describe('googleSignIn', () => {
 describe('facebookSignIng', () => {
   it('deberia loguearse con facebook', () => {
     facebookSignIng().then(() => {
-      expect('hola').toStrictEqual('hola');
+      expect('hola').toBe('hola');
     });
   });
 });
 
 describe('signOut', () => {
-  it('deberia cerrar sesion', () => signOut().then(() => {
-    expect('Fin de sesion').toStrictEqual('Fin de sesion');
+  it('deberia cerrar sesion', () => signOut().then((user) => {
+    expect(user).toBe(undefined);
   }));
 });

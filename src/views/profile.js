@@ -1,25 +1,25 @@
 import { eventSignOut } from '../controllers/login-controller.js';
-import { getUser } from '../controllers/profile-controller.js';
-import { createPost, showPublication } from '../controllers/post-controller.js';
+import { createPost } from '../controllers/post-controller.js';
 import { postView } from './posts.js';
 
 
-export default (posts, user) => {
+export default (posts) => {
   const viewProfile = `
         <header>
             <nav>
-                <li id="name-user">Usuario</li>
+            <a href="#/userProfile"><li id="name-user"></li></a>
                 <li id="btn-close">Cerrar Sesion</li>
             </nav>
         </header>
         <div class="body">
             <div class="profile-section">
-                <img class="cover-page" src="../src/img/fondo.jpg" alt="portada">
+                <img class="cover-page" src="./img/fondo.jpg" alt="portada">
                 <div class="info-user">
                     <img id="photo" class="avatar" src="" alt="avatar" >
                     <div>
-                        <p id="name" class="user" ></p>
+                        <p id="name" class="user"></p>
                         <p id="email" class="user-description"></p>
+                        <p id="info-user"></p>
                     </div>
                 </div>
             </div>
@@ -57,7 +57,6 @@ export default (posts, user) => {
     allPublications.appendChild(postView(element));
   });
   divElement.querySelector('#btn-close').addEventListener('click', eventSignOut);
-  getUser();
   divElement.querySelector('#btn-post').addEventListener('click', createPost);
   return divElement;
 };

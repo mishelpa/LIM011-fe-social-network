@@ -1,4 +1,4 @@
-import { createAuth, verificationEmail, addNote } from '../models/model-firebase.js';
+import { createAuth, addNote } from '../models/model-firebase.js';
 
 const createUser = (event) => {
   const btnRegister = event.target;
@@ -9,7 +9,13 @@ const createUser = (event) => {
   if (email !== '' || password !== '') {
     createAuth(email, password)
       .then((newUser) => {
-        verificationEmail();
+        const redirect = {
+          url: 'http://localhost:5000/',
+        };
+        newUser.user.sendEmailVerification(redirect)
+          .then(() => {
+            message.innerHTML = 'Registro Satisfactorio, se envio correo de verificacion';
+          });
         const obj = {
           name: nameUser,
           email: newUser.user.email,

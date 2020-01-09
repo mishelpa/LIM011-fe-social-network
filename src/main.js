@@ -1,4 +1,5 @@
 import changeView from './controllers/route.js';
+import { initView } from './models/model-auth.js';
 
 const init = () => {
   window.addEventListener('hashchange', () => changeView(window.location.hash));
@@ -13,8 +14,7 @@ const init = () => {
     appId: '1:842165782313:web:fc7f4b364affd66c55d938',
   };
   firebase.initializeApp(firebaseConfig);
-  changeView(window.location.hash);
-  // changeView(window.location.hash);
+  initView();
 };
 
 window.addEventListener('load', init);

@@ -2,11 +2,9 @@
 import {
   signIn, googleSignIn, facebookSignIng, signOut, addNote,
 } from '../models/model-firebase.js';
-// import { getUser } from './profile-controller.js';
 
 export const signInUser = (event) => {
   event.preventDefault(); // para detener al action del form (submit)
-
   const btnLogin = event.target;
   const email = btnLogin.closest('div').querySelector('[type=email]').value;
   const password = btnLogin.closest('div').querySelector('[type=password]').value;

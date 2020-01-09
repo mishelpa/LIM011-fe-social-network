@@ -7,12 +7,12 @@ export const getUser = () => {
   getNote('user')
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        console.log(doc);
-        if (doc.id === userActive().uid) {
+        if (doc.id === user().uid) {
           document.querySelector('#name-user').textContent = doc.data().name;
           document.querySelector('#name').textContent = doc.data().name;
           document.querySelector('#email').textContent = doc.data().email;
           document.querySelector('#photo').src = doc.data().photoURL;
+          document.querySelector('#info-user').textContent = doc.data().description;
         }
       });
     });

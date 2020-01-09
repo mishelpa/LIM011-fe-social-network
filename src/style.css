@@ -101,7 +101,7 @@ button>a{
 
 header{
     background-color: rgb(211, 209, 209);
-    background-image: url('../src/img/logo6.png');
+    background-image: url('./img/logo6.png');
     background-size: 130px;
     background-repeat: no-repeat;
     background-position: center;
@@ -127,12 +127,36 @@ nav li{
     width: 84%;
     margin: 3%;
 }
+
+.like{
+background-image: url(https://img.icons8.com/flat_round/64/000000/hearts.png);
+background-size: cover;
+}
+.no-like{
+background-image: url(https://img.icons8.com/ios/24/000000/like.png);
+}
+.user-section{
+    width: 90%;
+    margin:2%;
+    text-align: center;
+
+}
+.user-center{
+    text-align: center;
+}
+
 .cover-page{
     display: none;
 }
 .avatar{
     width: 70px;
     height: 70px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
+.avatar-user{
+    width: 100%;
+    height: 20%;
     border: 1px solid #ccc;
     border-radius: 50%;
 }

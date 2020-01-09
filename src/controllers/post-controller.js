@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import {
-  addPost, deletePost, updatePost, showPost, saveLikes, showLikes, addComments, showComments,
+  addPost, deletePost, updatePost, showPost, deleteEleArray,
+  addComments, showComments, addEleArray, getLike,
 } from '../models/model-firebase.js';
 import { userActive } from './profile-controller.js';
 
@@ -25,6 +26,7 @@ export const createPost = (event) => {
     name_user: user.displayName,
     date_post: datePublication(date),
     status: statusPost,
+    likeEmail: '',
   };
   addPost('post', obj)
     .then((docRef) => {
@@ -57,33 +59,31 @@ export const updatePublication = (ide, obj) => {
     });
 };
 
-export const showPublication = () => {
+export const showUserPost = () => {
   showPost();
 };
 
-export const saveLikePublication = (idPost, obj, ide) => {
-  saveLikes(idPost, obj, ide)
-    .then(() => {
-      console.log('like registrado');
-    })
-    .catch((error) => {
-      console.error('Error adding document: ', error);
-    });
-};
-
-export const showLikePublication = (idPost) => {
-  // const btnLikes = document.querySelector(`#btn-like-${idPost}`);
-  // const btnNonLikes = document.querySelector(`#btn-nonlike-${idPost}`);
-  const countLikes = document.querySelector(`#count-likes-${idPost}`);
-  showLikes(idPost)
-    .onSnapshot((querySnapshot) => {
-      let count = 0;
-      querySnapshot.forEach((doc) => {
-        console.log(doc.data());
-        count += 1;
-      });
-      console.log(count);
-      countLikes.innerHTML = count;
+export const likes = (idPost, emailUser) => {
+  getLike(idPost)
+    .then((doc) => {
+      const arrayEmail = doc.data().likeEmail;
+      if (arrayEmail.length === 0) {
+        addEleArray(idPost, emailUser);
+      } else {
+        arrayEmail.forEach((ele) => {
+          if (ele !== emailUser) {
+            console.log(document.querySelector(`#btn-like-${doc.id}`));
+            document.querySelector(`#btn-like-${doc.id}`).classList.add('like');
+            document.querySelector(`#btn-like-${doc.id}`).classList.remove('no-like');
+            addEleArray(idPost, emailUser);
+          } else {
+            console.log(document.querySelector(`btn-like-${doc.id}`));
+            document.querySelector(`#btn-like-${doc.id}`).classList.add('no-like');
+            document.querySelector(`#btn-like-${doc.id}`).classList.remove('like');
+            deleteEleArray(idPost, emailUser);
+          }
+        });
+      }
     });
 };
 
@@ -91,19 +91,13 @@ export const createComments = (idPost, obj) => {
   addComments(idPost, obj)
     .then((docRef) => {
       console.log('Document written with ID: ', docRef);
-      document.querySelector('#comment-post').value = '';
+      document.querySelector(`#comment-post-${idPost}`).value = '';
     })
     .catch((error) => {
       console.error('Error adding document: ', error);
     });
 };
 
-export const showCommentPublication = (idPost) => {
-  showComments(idPost)
-    .then((querySnapshot) => {
-      document.querySelector(`#${idPost}`).innerHTML = '';
-      querySnapshot.forEach((doc) => {
-        //  commentView(doc);
-      });
-    });
+export const showCommentPublication = (idPost, callback) => {
+  showComments(idPost, callback);
 };
