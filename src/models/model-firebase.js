@@ -23,7 +23,7 @@ export const user = () => firebase.auth().currentUser;
 export const addNote = (note, id, obj) => firebase.firestore().collection(note).doc(id).set(obj);
 export const getNote = (note) => firebase.firestore().collection(note).get();
 export const updateNote = (id, doc) => firebase.firestore().collection('user').doc(id).update(doc);
-export const getLike = (id) => firebase.firestore().collection('post').doc(id).get();
+
 
 export const addPost = (nameCollection, obj) => (
   firebase.firestore().collection(nameCollection).add(obj)
@@ -71,14 +71,8 @@ export const updateComment = (idPost, id, obj) => firebase.firestore().collectio
   .doc(id)
   .update(obj);
 
-/* export const saveLikes = (idPost, obj, ide) => firebase.firestore().collection('post')
-  .doc(idPost).collection('likes')
-  .doc(ide)
-  .set(obj); */
 
-export const showLikes = (idPost) => firebase.firestore().collection('post').doc(idPost).collection('likes')
-  .get();
-
+export const getLike = (id) => firebase.firestore().collection('post').doc(id).get();
 // Agregar Array.
 export const addEleArray = (idPost, emailUser) => (
   firebase.firestore().collection('post').doc(idPost)

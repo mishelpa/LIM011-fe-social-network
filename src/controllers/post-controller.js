@@ -72,14 +72,9 @@ export const likes = (idPost, emailUser) => {
       } else {
         arrayEmail.forEach((ele) => {
           if (ele !== emailUser) {
-            console.log(document.querySelector(`#btn-like-${doc.id}`));
-            document.querySelector(`#btn-like-${doc.id}`).classList.add('like');
-            document.querySelector(`#btn-like-${doc.id}`).classList.remove('no-like');
             addEleArray(idPost, emailUser);
           } else {
             console.log(document.querySelector(`btn-like-${doc.id}`));
-            document.querySelector(`#btn-like-${doc.id}`).classList.add('no-like');
-            document.querySelector(`#btn-like-${doc.id}`).classList.remove('like');
             deleteEleArray(idPost, emailUser);
           }
         });

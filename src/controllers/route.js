@@ -27,6 +27,7 @@ const changeView = (route) => {
         document.querySelector('#container').innerHTML = '';
         container.appendChild(components.profile(arrDeData, getUser()));
       });
+      // fnunsubscrite();
     }
     default:
       break;
