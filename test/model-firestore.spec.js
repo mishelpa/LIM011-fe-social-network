@@ -3,7 +3,7 @@ import MockFirebase from 'mock-cloud-firestore';
 import {
   addPost, addNote, showPost, deletePost, updatePost, showPostUser, updateComment,
   addComments, showComments, deleteComment, addEleArray,
-  deleteEleArray, getLike, getNote, updateNote,
+  deleteEleArray, getLike, getNote,
 } from '../src/models/model-firebase.js';
 
 const fixtureData = {
@@ -86,13 +86,12 @@ describe('getNote', () => {
   }));
 });
 
-describe('updateNote', () => {
+/* describe('updateNote', () => {
   it('deberia actualizar un post', (done) => updateNote('u001', { email: 'judmi20@gmail.com' })
     .then(() => {
-      
       done();
     }));
-});
+}); */
 
 describe('addPost', () => {
   it('deberia agregar un post', (done) => addPost('post', objPost).then((user) => {

@@ -40,7 +40,7 @@ export const postView = (publication) => {
             <textarea class="comment-post" id="comment-post-${publication.id}" cols="30" rows="2" placeholder="Escribe un comentario"></textarea>
             <img id="btn-comment-${publication.id}" class="icons" src="https://img.icons8.com/color/96/000000/telegram-app.png">
           </form> 
-          <div class="" id="${publication.id}">   
+          <div class="" id="container-${publication.id}">   
           </div>
         </div>
     </div>
@@ -105,7 +105,7 @@ export const postView = (publication) => {
     // showCommentPublication(publication.id);
   });
   showCommentPublication(publication.id, (data) => {
-    const containerComments = document.querySelector(`#${publication.id}`);
+    const containerComments = divElement.querySelector(`#container-${publication.id}`);
     containerComments.innerHTML = '';
     data.forEach((element) => {
       containerComments.appendChild(commentView(element));

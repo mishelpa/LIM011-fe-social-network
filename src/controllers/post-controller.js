@@ -26,7 +26,7 @@ export const createPost = (event) => {
     name_user: user.displayName,
     date_post: datePublication(date),
     status: statusPost,
-    likeEmail: '',
+    likeEmail: [],
   };
   addPost('post', obj)
     .then((docRef) => {

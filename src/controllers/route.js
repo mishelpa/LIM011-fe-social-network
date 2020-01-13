@@ -4,6 +4,9 @@ import components from '../views/components.js';
 import { showPost, showPostUser, user } from '../models/model-firebase.js';
 import { getUser } from './profile-controller.js';
 
+let fnUnsuscribeHome;
+let fnUnsuscribeUser;
+
 const changeView = (route) => {
   const container = document.querySelector('#container');
   container.innerHTML = '';
@@ -17,17 +20,20 @@ const changeView = (route) => {
       return container.appendChild(components.register());
     }
     case '#/userProfile': {
-      return showPostUser(user().uid, (arrDeData) => {
+      fnUnsuscribeHome = showPostUser(user().uid, (arrDeData) => {
         document.querySelector('#container').innerHTML = '';
         container.appendChild(components.userProfile(arrDeData, getUser()));
       });
+      fnUnsuscribeUser();
+      break;
     }
     case '#/profile': {
-      return showPost((arrDeData) => {
+      fnUnsuscribeUser = showPost((arrDeData) => {
         document.querySelector('#container').innerHTML = '';
         container.appendChild(components.profile(arrDeData, getUser()));
       });
-      // fnunsubscrite();
+      fnUnsuscribeHome();
+      break;
     }
     default:
       break;

@@ -17,9 +17,9 @@ export const commentView = (comment) => {
       </div>
     </div>
       `;
-  const allComments = document.querySelector(`#${comment.id_publication}`);
+  // const allComments = document.querySelector(`#${comment.id_publication}`);
   divElement.innerHTML = commentInfo;
-  allComments.appendChild(divElement);
+  // allComments.appendChild(divElement);
 
   const btnDelete = divElement.querySelector(`#btn-delete-${comment.id}`);
   btnDelete.addEventListener('click', () => {
