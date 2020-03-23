@@ -14,8 +14,8 @@ export const postView = (publication) => {
     <div class="div-post">
         <div class="post-header">
           <div class="main-header-post">
-            <span><b>${publication.name_user}</b></span>
             <img src="${publication.photo_user}" class="img-user">
+            <span class="name-user-publication"><b>${publication.name_user}</b></span>
             <span>
               <i id="btn-edit-${publication.id}" class="fas fa-edit icon-post"></i>
               <i id="btn-save-${publication.id}" class="fas fa-save hide icon-post"></i>
@@ -34,8 +34,11 @@ export const postView = (publication) => {
             <img id="btn-like-${publication.id}" class="icons" src="https://img.icons8.com/flat_round/64/000000/hearts.png">
             <img id="btn-nonlike-${publication.id}" class="icons hide" src="https://img.icons8.com/flat_round/64/000000/hearts.png">
             &nbsp; &nbsp; <p class="count-likes" id="count-likes-${publication.id}">${publication.likeEmail.length}</p>   
-          </div>    
+          </div>
+          <span>    
             <i id="btn-commentView-${publication.id}" class="far fa-comments"></i>
+            <span id="commentQty">0</span>
+          </span>
             <select name="status" id="post-status-${publication.id}" disabled>
               <option value="publico">Público</option>
               <option value="privado">Privado</option>
@@ -109,11 +112,11 @@ export const postView = (publication) => {
   const commentSection = divElement.querySelector(`#comments-section-${publication.id}`);
   btnCommentView.addEventListener('click', () => {
     commentSection.classList.toggle('hide');
-    // showCommentPublication(publication.id);
   });
   showCommentPublication(publication.id, (data) => {
     const containerComments = divElement.querySelector(`#container-${publication.id}`);
     containerComments.innerHTML = '';
+    divElement.querySelector('#commentQty').innerHTML = data.length;
     data.forEach((element) => {
       containerComments.appendChild(commentView(element));
     });

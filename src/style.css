@@ -41,7 +41,7 @@ body{
 }
 .btn-log-reg{
     width: 30%;
-    background-color:#28ABE3;
+    background: linear-gradient(340.56deg, #7028E4 5%, #E5B2CA 100%);
     color: white;
     font-size: 17px;
     font-weight: bold;
@@ -333,6 +333,9 @@ select{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+.name-user-publication{
+    width: 80%;
 }
 .img-user{
         width: 5%;
