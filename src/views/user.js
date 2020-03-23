@@ -10,22 +10,22 @@ export default (posts) => {
   const viewUser = `
     <header>
         <nav>
-        <a href="#/profile"><li id="">Ir al Inicio</li></a>
+        <a class="go-profile" href="#/profile"><li id="">Ir a Inicio</li></a>
         <li id="name-user" class="hide">Inicio</li>
             <li id="btn-close">Cerrar Sesion</li>
         </nav>
     </header>
     <div class="body">
-        <div class="profile-section user-center">
-            <div class="info-user">
-                <img id="photo" class="avatar-user" src="" alt="avatar" >
+        <div class="user-center">
+            <div class="info-user-profile">
+                <img id="photo" class="avatar-user-profile" src="" alt="avatar" >
             </div>
-            <p id="name" class="user" ></p>
+            <p id="name" class="user"></p>
             <p id="email" class="user-description"></p>
             <p id="info-user">Agrega una breve descripcion para que las personas sepan mas sobre ti</p>
-            <button id="btn-edit-user" class="btn-user">Editar datos</button>
+            <button id="btn-edit-user" class="btn-post">Editar datos</button>
             <button id="btn-save-user" class="btn-post hide" >Guardar</button>
-            <button id="btn-edit-info" class="btn-user">Agregar descripción</button>
+            <button id="btn-edit-info" class="btn-post">Agregar descripción</button>
             <button id="btn-save-info" class="btn-post hide" >Guardar</button>
         </div>
         <div class="publications-section">

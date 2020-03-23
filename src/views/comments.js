@@ -6,13 +6,16 @@ export const commentView = (comment) => {
   <div class="div-allcomments">
       <div class="div-comment">
           <div class="comment-header">
-                <span>${comment.name_user}</span>
-                <img id="btn-edit-${comment.id}" class="icons" src="https://img.icons8.com/flat_round/64/000000/edit-file.png">
-                <img id="btn-save-${comment.id}" class="icons hide" src="https://img.icons8.com/cute-clipart/64/000000/save-close.png">
-                <span class="btn-delete" id="btn-delete-${comment.id}">&times;</span>
-          </div>
-          <div class="comment-body">
-              <p id="comment-message-${comment.id}" class="comment-message" contenteditable="false">${comment.message}</p>
+            <img src="${comment.photo_user}" class="img-user">
+            <p id="comment-message-${comment.id}" class="comment-message" contenteditable="false">
+              <span class="name-user-comment"><b>${comment.name_user}</b></span>
+              <span>${comment.message}</span>
+            </p>
+            <p class="icons-comment">
+              <i id="btn-edit-${comment.id}" class="fas fa-edit icon-post"></i>
+              <i id="btn-save-${comment.id}" class="fas fa-save hide icon-post"></i>
+              <i id="btn-delete-${comment.id}" class="fas fa-trash-alt icon-post"></i>
+            </p>
           </div>
       </div>
     </div>
@@ -43,6 +46,7 @@ export const commentView = (comment) => {
       message: newMessage,
       id_publication: comment.id_publication,
       name_user: comment.name_user,
+      photo_user:comment.photoURL
     };
     updateCommentPublication(comment.id_publication, comment.id, obj);
     btnEdit.classList.remove('hide');

@@ -7,7 +7,7 @@ export default (posts) => {
   const viewProfile = `
         <header>
             <nav>
-            <a href="#/userProfile">Visitar mi perfil</a>
+            <a class="go-profile" href="#/userProfile">Ir a Perfil</a>
             <li id="btn-close">Cerrar Sesion</li>
             </nav>
         </header>

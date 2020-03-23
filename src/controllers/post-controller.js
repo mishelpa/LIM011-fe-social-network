@@ -23,6 +23,7 @@ export const createPost = (event) => {
   const obj = {
     message: post,
     id_user: user.uid,
+    photo_user: user.photoURL,
     name_user: user.displayName,
     date_post: datePublication(date),
     status: statusPost,
@@ -32,6 +33,8 @@ export const createPost = (event) => {
     .then((docRef) => {
       console.log('Document written with ID: ', docRef);
       document.querySelector('#message-post').value = '';
+      console.log(userActive());
+      
     })
     .catch((error) => {
       console.error('Error adding document: ', error);

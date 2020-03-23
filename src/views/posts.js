@@ -13,14 +13,18 @@ export const postView = (publication) => {
   const postInfo = `
     <div class="div-post">
         <div class="post-header">
-            <p>
-              <span> ${publication.name_user}</span>
-            </p>
-            <select name="status" id="post-status-${publication.id}" disabled>
-              <option value="publico">Público</option>
-              <option value="privado">Privado</option>
-            </select>
-            <span class="btn-delete" id="btn-delete-${publication.id}">&times;</span>
+          <div class="main-header-post">
+            <span><b>${publication.name_user}</b></span>
+            <img src="${publication.photo_user}" class="img-user">
+            <span>
+              <i id="btn-edit-${publication.id}" class="fas fa-edit icon-post"></i>
+              <i id="btn-save-${publication.id}" class="fas fa-save hide icon-post"></i>
+              <i id="btn-delete-${publication.id}" class="fas fa-trash-alt icon-post"></i>
+            <span>
+          </div>
+          <div>
+          <span> ${publication.date_post} </span>
+          </div>            
         </div>
         <div class="post-body">
             <div id="post-message-${publication.id}" contenteditable="false">${publication.message}</div>
@@ -31,14 +35,17 @@ export const postView = (publication) => {
             <img id="btn-nonlike-${publication.id}" class="icons hide" src="https://img.icons8.com/flat_round/64/000000/hearts.png">
             &nbsp; &nbsp; <p class="count-likes" id="count-likes-${publication.id}">${publication.likeEmail.length}</p>   
           </div>    
-            <img id="btn-commentView-${publication.id}" class="icons" src="https://img.icons8.com/doodle/48/000000/filled-topic.png">
-            <img id="btn-edit-${publication.id}" class="icons" src="https://img.icons8.com/flat_round/64/000000/edit-file.png">
-            <img id="btn-save-${publication.id}" class="icons hide" src="https://img.icons8.com/cute-clipart/64/000000/save-close.png">
+            <i id="btn-commentView-${publication.id}" class="far fa-comments"></i>
+            <select name="status" id="post-status-${publication.id}" disabled>
+              <option value="publico">Público</option>
+              <option value="privado">Privado</option>
+            </select>
         </div>
         <div id ="comments-section-${publication.id}" class="comments-section hide">
           <form class ="form-comment">
+            <img src="${userActive().photoURL}" class="img-user">
             <textarea class="comment-post" id="comment-post-${publication.id}" cols="30" rows="2" placeholder="Escribe un comentario"></textarea>
-            <img id="btn-comment-${publication.id}" class="icons" src="https://img.icons8.com/color/96/000000/telegram-app.png">
+            <i id="btn-comment-${publication.id}" class="fas fa-paper-plane"></i>
           </form> 
           <div class="" id="container-${publication.id}">   
           </div>
@@ -63,7 +70,7 @@ export const postView = (publication) => {
     postMesage.focus();
     btnEdit.classList.add('hide');
     btnSave.classList.remove('hide');
-    console.log('hola');
+    console.log(userActive);
   });
 
   btnSave.addEventListener('click', () => {
@@ -120,6 +127,7 @@ export const postView = (publication) => {
       message: comment,
       id_publication: publication.id,
       name_user: user.displayName,
+      photo_user:user.photoURL
     };
     createComments(publication.id, obj);
     divElement.querySelector(`#comment-post-${publication.id}`).value = '';
