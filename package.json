@@ -32,7 +32,7 @@
     "jest": "^24.9.0",
     "mock-cloud-firestore": "^0.11.0",
     "regenerator-runtime": "^0.13.1",
-    "serve": "^11.0.2",
+    "serve": "^11.3.0",
     "stylelint": "^10.1.0",
     "stylelint-config-recommended": "^2.2.0"
   }

@@ -10,7 +10,7 @@ export default (posts) => {
   const viewUser = `
     <header>
         <nav>
-        <a href="#/profile"><li id="">Inicio</li></a>
+        <a href="#/profile"><li id="">Ir al Inicio</li></a>
         <li id="name-user" class="hide">Inicio</li>
             <li id="btn-close">Cerrar Sesion</li>
         </nav>

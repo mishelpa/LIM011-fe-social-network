@@ -4,8 +4,8 @@ import components from '../views/components.js';
 import { showPost, showPostUser, user } from '../models/model-firebase.js';
 import { getUser } from './profile-controller.js';
 
-let fnUnsuscribeHome;
-let fnUnsuscribeUser;
+let fnUnsuscribeHome = () => {};
+let fnUnsuscribeUser = () => {};
 
 const changeView = (route) => {
   const container = document.querySelector('#container');

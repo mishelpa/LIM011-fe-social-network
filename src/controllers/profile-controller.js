@@ -8,7 +8,6 @@ export const getUser = () => {
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         if (doc.id === user().uid) {
-          document.querySelector('#name-user').textContent = doc.data().name;
           document.querySelector('#name').textContent = doc.data().name;
           document.querySelector('#email').textContent = doc.data().email;
           document.querySelector('#photo').src = doc.data().photoURL;

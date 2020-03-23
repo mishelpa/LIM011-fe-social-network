@@ -7,13 +7,13 @@ export default (posts) => {
   const viewProfile = `
         <header>
             <nav>
-            <a href="#/userProfile"><li id="name-user"></li></a>
-                <li id="btn-close">Cerrar Sesion</li>
+            <a href="#/userProfile">Visitar mi perfil</a>
+            <li id="btn-close">Cerrar Sesion</li>
             </nav>
         </header>
         <div class="body">
             <div class="profile-section">
-                <img class="cover-page" src="./img/fondo.jpg" alt="portada">
+                <img class="cover-page" src="./img/fondo.png" alt="portada">
                 <div class="info-user">
                     <img id="photo" class="avatar" src="" alt="avatar" >
                     <div>

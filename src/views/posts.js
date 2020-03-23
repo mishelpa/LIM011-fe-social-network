@@ -13,7 +13,7 @@ export const postView = (publication) => {
   const postInfo = `
     <div class="div-post">
         <div class="post-header">
-            <p>Publicado por 
+            <p>
               <span> ${publication.name_user}</span>
             </p>
             <select name="status" id="post-status-${publication.id}" disabled>
