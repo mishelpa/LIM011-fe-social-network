@@ -125,6 +125,7 @@ nav li{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-left: 7%;
 }
 .profile-section{
     width: 85%;
@@ -276,6 +277,7 @@ select{
         flex-direction: row;
         justify-content: center;
         align-items: flex-start;
+        margin-left: 0%;
     }
     .profile-section{
         width: 40%;
@@ -284,6 +286,7 @@ select{
         margin-top: 2%;
         background: linear-gradient(319deg, #7028E4 0%, #E5B2CA 100%);
     }
+    
     .cover-page{
         display: block;
         width: 100%;
@@ -298,6 +301,7 @@ select{
         width: 35%;
         margin-top: 2%;
     }
+
     .message-post{
         margin-top: 3.5%;
         width: 91%;
