@@ -1,32 +1,38 @@
 import { eventSignOut } from '../controllers/login-controller.js';
 import { createPost } from '../controllers/post-controller.js';
 import { postView } from './posts.js';
-import {
-  editInfo, saveInfo, editUser, saveUser,
-} from '../controllers/userProfile-controller.js';
-import { user } from '../models/model-firebase.js';
 
 export default (posts) => {
   const viewUser = `
     <header>
-        <nav>
-        <a class="go-profile" href="#/profile"><li id="">Ir a Inicio</li></a>
-        <li id="name-user" class="hide">Inicio</li>
-            <li id="btn-close">Cerrar Sesion</li>
-        </nav>
+      <nav>
+      <a class="go-profile" href="#/profile"><li id="">Ir a Inicio</li></a>
+      <li id="name-user" class="hide">Inicio</li>
+      <li><img class="" src="img/logo6.png" alt="logo CodeGirl" width=120px></li>
+      <li id="btn-close">Cerrar Sesion</li>
+      </nav>
     </header>
     <div class="body">
-        <div class="user-center">
+        <div class="profile-section">
             <div class="info-user-profile">
                 <img id="photo" class="avatar-user-profile" src="" alt="avatar" >
+                <p id="name" class="user user-profile"></p>
+                <p id="email" class="user-description user-profile"></p>
             </div>
-            <p id="name" class="user"></p>
-            <p id="email" class="user-description"></p>
-            <p id="info-user">Agrega una breve descripcion para que las personas sepan mas sobre ti</p>
-            <button id="btn-edit-user" class="btn-post">Editar datos</button>
-            <button id="btn-save-user" class="btn-post hide" >Guardar</button>
-            <button id="btn-edit-info" class="btn-post">Agregar descripción</button>
-            <button id="btn-save-info" class="btn-post hide" >Guardar</button>
+            <div class="statistics">
+            <div>
+              <span><b>Mis Post Públicos</b></span>
+              <span id="qtyPublic">${posts.length}</span>
+            </div>
+            <div>
+              <span><b>Mis Post Privados</b></span>
+              <span id="qtyPrivate"></span>
+            </div>
+            <div>
+              <span><b>Likes en mis Posts</b></span>
+              <span id="qtyLikes"></span>
+            </div>
+            </div>
         </div>
         <div class="publications-section">
         <form class="form">
@@ -59,18 +65,20 @@ export default (posts) => {
     divElement.querySelector('#input-value').innerHTML = file.value.replace(/([^\\]*\\)*/, '');
   });
   const allPublications = divElement.querySelector('#all-publications');
+  let publicationPublic = 0;
+  let publicationPrivate = 0;
+  let likeByUserActive = 0;
   posts.forEach((element) => {
     allPublications.appendChild(postView(element));
+    if (element.status ==="publico") publicationPublic += 1;
+    if (element.status ==="privado") publicationPrivate += 1;
+    likeByUserActive += element.likeEmail.length;
   });
+  divElement.querySelector('#qtyPrivate').innerHTML = publicationPrivate;
+  divElement.querySelector('#qtyPublic').innerHTML = publicationPublic;
+  divElement.querySelector('#qtyLikes').innerHTML = likeByUserActive;
   divElement.querySelector('#btn-close').addEventListener('click', eventSignOut);
   divElement.querySelector('#btn-post').addEventListener('click', createPost);
-  divElement.querySelector('#btn-edit-user').addEventListener('click', editUser);
-  divElement.querySelector('#btn-save-user').addEventListener('click', () => {
-    saveUser(user().uid);
-  });
-  divElement.querySelector('#btn-edit-info').addEventListener('click', editInfo);
-  divElement.querySelector('#btn-save-info').addEventListener('click', () => {
-    saveInfo(user().uid);
-  });
+
   return divElement;
 };

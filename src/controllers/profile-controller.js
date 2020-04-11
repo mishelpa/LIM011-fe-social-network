@@ -11,7 +11,6 @@ export const getUser = () => {
           document.querySelector('#name').textContent = doc.data().name;
           document.querySelector('#email').textContent = doc.data().email;
           document.querySelector('#photo').src = doc.data().photoURL;
-          document.querySelector('#info-user').textContent = doc.data().description;
         }
       });
     });

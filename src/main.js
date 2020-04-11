@@ -1,9 +1,9 @@
 import changeView from './controllers/route.js';
 import { initView } from './models/model-auth.js';
 
+// Conexion with Firebase.
 const init = () => {
   window.addEventListener('hashchange', () => changeView(window.location.hash));
-  // conexion
   const firebaseConfig = {
     apiKey: 'AIzaSyCwb1kWrtsQ_wwLlJCSYm2hoWNCsKoctA8',
     authDomain: 'codegirl-d7480.firebaseapp.com',
@@ -15,8 +15,8 @@ const init = () => {
     measurementId: 'G-J9Z1N4JM3H',
   };
   firebase.initializeApp(firebaseConfig);
-  // changeView(window.location.hash);
   initView();
 };
 
+//Application's start
 window.addEventListener('load', init);

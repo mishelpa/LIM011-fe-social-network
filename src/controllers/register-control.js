@@ -9,10 +9,7 @@ const createUser = (event) => {
   if (email !== '' || password !== '') {
     createAuth(email, password)
       .then((newUser) => {
-        const redirect = {
-          url: 'http://localhost:5000/',
-        };
-        newUser.user.sendEmailVerification(redirect)
+        newUser.user.sendEmailVerification()
           .then(() => {
             message.innerHTML = 'Registro Satisfactorio, se envio correo de verificacion';
           });
@@ -25,10 +22,7 @@ const createUser = (event) => {
         window.location.hash = '#/';
       })
       .catch((error) => {
-      // Handle Errors here.
         const errorCode = error.code;
-        // const errorMessage = error.message;
-        // console.log(errorMessage);
         switch (errorCode) {
           case 'auth/invalid-email':
             message.innerHTML = 'La dirección de correo electrónico no es valida';

@@ -1,6 +1,7 @@
 import { eventSignOut } from '../controllers/login-controller.js';
 import { createPost } from '../controllers/post-controller.js';
 import { postView } from './posts.js';
+import {userActive} from '../controllers/profile-controller.js';
 
 
 export default (posts) => {
@@ -8,6 +9,7 @@ export default (posts) => {
         <header>
             <nav>
             <a class="go-profile" href="#/userProfile">Ir a Perfil</a>
+            <li><img class="" src="img/logo6.png" alt="logo CodeGirl" width=120px></li>
             <li id="btn-close">Cerrar Sesion</li>
             </nav>
         </header>
@@ -20,6 +22,20 @@ export default (posts) => {
                         <p id="name" class="user"></p>
                         <p id="email" class="user-description"></p>
                         <p id="info-user"></p>
+                    </div>
+                </div>
+                <div class="statistics">
+                    <div>
+                        <span><b>Post Públicos en CodeGirl</b></span>
+                        <span id="postsTotal">${posts.length}</span>
+                    </div>
+                    <div>
+                        <span><b>Mis Post Públicos</b></span>
+                        <span id="qtyPublication"></span>
+                    </div>
+                    <div>
+                        <span><b>Likes en mis Posts Públicos</b></span>
+                        <span id="qtyLikes"></span>
                     </div>
                 </div>
             </div>
@@ -53,9 +69,17 @@ export default (posts) => {
     divElement.querySelector('#input-value').innerHTML = file.value.replace(/([^\\]*\\)*/, '');
   });
   const allPublications = divElement.querySelector('#all-publications');
+  let publicationByUserActive = 0;
+  let likeByUserActive = 0;
   posts.forEach((element) => {
     allPublications.appendChild(postView(element));
+    if(userActive().uid===element.id_user){
+        publicationByUserActive+=1;
+        likeByUserActive += element.likeEmail.length;
+    }
   });
+  divElement.querySelector('#qtyPublication').innerHTML = publicationByUserActive;
+  divElement.querySelector('#qtyLikes').innerHTML = likeByUserActive;
   divElement.querySelector('#btn-close').addEventListener('click', eventSignOut);
   divElement.querySelector('#btn-post').addEventListener('click', createPost);
   return divElement;

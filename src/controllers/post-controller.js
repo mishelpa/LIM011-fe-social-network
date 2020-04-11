@@ -30,11 +30,8 @@ export const createPost = (event) => {
     likeEmail: [],
   };
   addPost('post', obj)
-    .then((docRef) => {
-      console.log('Document written with ID: ', docRef);
+    .then(() => {
       document.querySelector('#message-post').value = '';
-      console.log(userActive());
-      
     })
     .catch((error) => {
       console.error('Error adding document: ', error);
@@ -57,7 +54,6 @@ export const updatePublication = (ide, obj) => {
       console.log('Document successfully updated!');
     })
     .catch((error) => {
-      // The document probably doesn't exist.
       console.error('Error updating document: ', error);
     });
 };
@@ -77,7 +73,6 @@ export const likes = (idPost, emailUser) => {
           if (ele !== emailUser) {
             addEleArray(idPost, emailUser);
           } else {
-            console.log(document.querySelector(`btn-like-${doc.id}`));
             deleteEleArray(idPost, emailUser);
           }
         });
@@ -87,8 +82,7 @@ export const likes = (idPost, emailUser) => {
 
 export const createComments = (idPost, obj) => {
   addComments(idPost, obj)
-    .then((docRef) => {
-      console.log('Document written with ID: ', docRef);
+    .then(() => {
       document.querySelector(`#comment-post-${idPost}`).value = '';
     })
     .catch((error) => {

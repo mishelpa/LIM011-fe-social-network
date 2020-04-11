@@ -19,13 +19,18 @@ body{
     width: 100%;
 }
 .login-register-img{
-    height: 90%;
-    padding-top: 2%;
+    height: 100%;
+    width: 100%;
 }  
 .login-register-section{
     height: 75%;
     width: 100%;
 }
+.login-register-section form{
+    width: 100%;
+    padding-top: 8%;
+}
+
 .login-register-body{
     width: 100%;
 }
@@ -40,8 +45,8 @@ body{
     width: 50%;
 }
 .btn-log-reg{
-    width: 30%;
-    background: linear-gradient(340.56deg, #7028E4 5%, #E5B2CA 100%);
+    width: 55%;
+    background: linear-gradient(135deg, #6f1a99 0%, #c22997 54%, #db36a4 100%);
     color: white;
     font-size: 17px;
     font-weight: bold;
@@ -63,6 +68,13 @@ button>a{
 .login-footer p:nth-child(3) {
     margin-top:10%;
 }
+.login-footer a, .register-footer a{
+    color:#7028E4;
+    font-weight: 800;
+    font-size: 120%;
+    text-decoration: none;
+}
+
 .conditions {
     width:50%;
     font-size: 0.75rem;
@@ -86,26 +98,27 @@ button>a{
     .login-register-section{
         width: 50%;
         height: 100vh;
+        justify-content: center;
+    }
+    .login-register-section form {
+        width: 70%;
+        padding-bottom: 4%;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.89);
+        padding-top: 0%;
     }
     .login-register-body{
         padding-top: 20%;
     }
     .input-log-reg {
-        width: 40%;
+        width: 45%;
     }
     .btn-login-register{
-        width: 20%;
+        width: 47%;
     }
 }
 
 /* Seccion de vista home y perfil  */
 
-header{
-    background-image: url('./img/logo6.png');
-    background-size: 100px;
-    background-repeat: no-repeat;
-    background-position: center;
-}
 nav{
     list-style: none;
     display: flex;
@@ -113,30 +126,31 @@ nav{
     padding: 15px 20px;
     font-size: 1.2rem;
     font-weight: bold;
+    background: linear-gradient(135deg, #8226b1 0%, #c22997 54%, #db36a4 100%);
 }
 nav li{
     cursor: pointer;
+    color:white;
 }
 .go-profile{
     text-decoration: none;
-    color:black
+    color:white
 }
 .body{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-left: 7%;
 }
 .profile-section{
-    width: 85%;
-    margin: 3%;
-    background: linear-gradient(319deg, #7028E4 0%, #E5B2CA 100%);
+    width: 100%;
+    margin-top: 3%;
 }
 .icon-post-header{
     align-items: flex-end;
 }
 .icon-post{
-    color: #B276D5;
+    color: black;
+    font-size: 135%;
 }
 
 .like{
@@ -153,6 +167,9 @@ background-image: url(https://img.icons8.com/ios/24/000000/like.png);
 
 }
 .user-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
 }
 
@@ -177,16 +194,23 @@ background-image: url(https://img.icons8.com/ios/24/000000/like.png);
     border: 1px solid #ccc;
     border-radius: 50%;
     margin-top: 5%;
-    border:#7028E4 solid 3pt;
+    border:#8226b1 solid 3pt;
 }
 .info-user{
     display: flex;
     flex-direction: row;
+    background: linear-gradient(135deg, #8226b1 0%, #c22997 54%, #db36a4 100%);
+    padding: 2%;
 }
 .info-user >div{
     width: 60%;
     font-size:13px;
     padding-left: 7%;
+}
+.info-user-profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .info-user-profile >div{
     width: 20%;
@@ -196,12 +220,31 @@ background-image: url(https://img.icons8.com/ios/24/000000/like.png);
     font-size: 15px;
     font-weight: bold;
     margin-bottom: 0%;
+    color: white;
 }
+
 .user-description{
     margin-top: 0%;
+    color: white;
 }
+.user-profile{
+    color: black;
+}
+.statistics{
+    display: flex;
+    flex-direction: column;
+}
+.statistics div{
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.89);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 2% 0%;
+    padding: 2% 0%;
+}
+
 .publications-section{
-    width: 85%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -259,7 +302,7 @@ select{
     outline: none;
 }
 .btn-post{
-    background: linear-gradient(340.56deg, #7028E4 5%, #E5B2CA 100%);
+    background: linear-gradient(135deg, #8226b1 0%, #c22997 54%, #db36a4 100%);
     border: 1px solid #ccc;
     border-radius: 10px;
     color:white;
@@ -277,14 +320,11 @@ select{
         flex-direction: row;
         justify-content: center;
         align-items: flex-start;
-        margin-left: 0%;
     }
     .profile-section{
         width: 40%;
-        border: 1px solid #ccc;
-        border-radius: 5px;
         margin-top: 2%;
-        background: linear-gradient(319deg, #7028E4 0%, #E5B2CA 100%);
+        margin: 2%;
     }
     
     .cover-page{
@@ -294,9 +334,7 @@ select{
         border-top-left-radius: 5px;
         border-top-right-radius: 5px;
     }
-    .info-user{
-        margin: 2%;
-    }
+
     .publications-section{
         width: 35%;
         margin-top: 2%;
@@ -332,11 +370,14 @@ select{
     border: 1px solid #ccc;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    background: linear-gradient(135deg, #8226b1 0%, #c22997 54%, #db36a4 100%);
+    color: white;
 }
 .main-header-post{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: 3%;
 }
 .name-user-publication{
     width: 80%;
@@ -427,6 +468,7 @@ select{
    border: 1px solid #ccc;
    border-radius: 13px;
    background-color: rgb(203, 147, 208,0.2);
+   padding: 2% 0%;
 }
 .name-user-comment{
     padding-left: 1%;
